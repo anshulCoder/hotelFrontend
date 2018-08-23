@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-xl bg-light navbar-light fixed-top custom-header">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav justify-content-start">
+      <a class="nav-link" routerLink="/">Home</a>
+    </ul>
+    <ul class="navbar-nav justify-content-end">
+      <li *ngIf="isLogged()" class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+          Profile
+        </a>
+        <div class="dropdown-menu">
+          <a class="nav-link" routerLink="bookings">View Bookings</a>
+          <a class="nav-link my-pointer-item" (click)="logout()">Logout</a>
+        </div>
+      </li>
+      <li class="pr-2" *ngIf="!isLogged()">
+        <a class="nav-link" routerLink="login">Login</a>
+      </li>
+    </ul>
+  </div>
+</nav>

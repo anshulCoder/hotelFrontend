@@ -1,0 +1,75 @@
+<div class="container-fluid space-for-header">
+  <div class="row">
+    <div class="col-sm-2 col-xs-0"></div>
+    <div class="col-sm-8 col-xs-12">
+      <div class="card form-wrapper">
+        <div class="card-header">
+          Hotel Booking System
+        </div>
+        <div class="card-body">
+          <form class="form" #bookForm="ngForm" (ngSubmit)="checkRooms(bookForm)">
+            <div class="form-group">
+              <label for="bDate">Booking Date: </label>
+              <input type="text" class="form-control" bsDaterangepicker
+              [(ngModel)]="bsRangeValue" [minDate]="minDate"
+              id="bDate" name="bDate" ngModel required/>
+            </div>
+            <div class="form-group">
+              <label for="rType">Room Type: </label>
+              <select class="form-control" name="rType" id="rType" ngModel>
+                <option value="">Select</option>
+                <option *ngFor="let r of availableRoomTypes" [value]="r['id']">
+                  {{r['room_name']+' Rs. '+ r['room_price']+'/night'}}
+                </option>
+              </select>
+            </div>
+            <button type="submit" [disabled]="!bookForm.valid" class="btn btn-success">Submit</button>
+          </form>
+        </div>
+      </div>
+      <br />
+      <div class="card-columns" *ngIf="roomsAvailability.length>0">
+        <div class="card bg-light" *ngFor="let room of roomsAvailability">
+          <div class="card-header">
+            {{room['name']}}
+          </div>
+          <div class="card-body text-center">
+            <p class="card-text">{{room['description']}}</p>
+            <h5>Available: {{room['total']}}</h5>
+          </div>
+          <div class="card-footer">
+            <button type="button" class="btn btn-danger" (click)="bookNow(room['roomIds'])">Book</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-2 col-xs-0"></div>
+  </div>
+</div>
+
+<div class="modal fade" bsModal #signupModal="bs-modal">
+  <div class="modal-dialog mx-50 myDataModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="closeModal()">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form class="form mb-2" #emailForm="ngForm" (ngSubmit)="checkEmail(emailForm)">
+          <div class="form-group">
+            <label for="email" class="pr-2">Enter Email: </label>
+            <input type="text" id="email" name="email" class="form-control pr-3"
+            [readonly]="emailCheckDone" pattern="^[a-z]+[a-z0-9._+]+@[a-z.-]+\.[a-z.]{2,5}$" ngModel required />
+          </div>
+          <div class="form-group" *ngIf="emailCheckDone">
+            <label for="password" class="pr-2">{{passLabel}}: </label>
+            <input type="password" id="password" name="password" class="form-control pr-3" ngModel required />
+          </div>
+          <button type="submit" class="btn btn-danger"
+                  [disabled]="!emailForm.valid">Proceed</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

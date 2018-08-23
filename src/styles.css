@@ -1,1 +1,131 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* General Style */
+.space-for-header {
+  margin-top:65px;
+}
+
+/* Indeterminate progress bar start */
+.progress {
+  position: sticky;
+  top:0;
+  height: 5px;
+  display: block;
+  width: 100%;
+  background-color: #ccc;
+  border-radius: 2px;
+  background-clip: padding-box;
+  overflow: hidden;
+}
+.progress .indeterminate {
+  background-color: #26a69a;
+}
+.progress .indeterminate:before {
+  content: '';
+  position: absolute;
+  background-color: #06c125;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  will-change: left, right;
+  -webkit-animation: indeterminate 3.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+          animation: indeterminate 3.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+}
+.progress .indeterminate:after {
+    content: '';
+    position: absolute;
+    background-color: #06c125;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    will-change: left, right;
+    -webkit-animation: indeterminate-short 3.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+            animation: indeterminate-short 3.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+    -webkit-animation-delay: 2.15s;
+            animation-delay: 2.15s;
+}
+
+@-webkit-keyframes indeterminate {
+  0% {
+    left: -35%;
+    right: 100%; }
+  60% {
+    left: 100%;
+    right: -90%; }
+  100% {
+    left: 100%;
+    right: -90%; }
+}
+@keyframes indeterminate {
+  0% {
+    left: -35%;
+    right: 100%; }
+  60% {
+    left: 100%;
+    right: -90%; }
+  100% {
+    left: 100%;
+    right: -90%; }
+}
+@-webkit-keyframes indeterminate-short {
+  0% {
+    left: -200%;
+    right: 100%; }
+  60% {
+    left: 107%;
+    right: -8%; }
+  100% {
+    left: 107%;
+    right: -8%; }
+}
+@keyframes indeterminate-short {
+  0% {
+    left: -200%;
+    right: 100%; }
+  60% {
+    left: 107%;
+    right: -8%; }
+  100% {
+    left: 107%;
+    right: -8%; }
+}
+
+.custom-body-loader
+{
+  overflow:hidden;
+  position: relative;
+}
+.loader {
+  width:100%;
+  height: 100%;
+  position: fixed;
+  top:0;
+  /* background:rgba(255,255,255,0.7); */
+  z-index: 1000000;
+  display:none;
+}
+/* Indeterminate progress bar end */
+
+
+/* Custom Alert Css start */
+.alert-custom {
+  z-index: 100000;
+  margin: 10px auto;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  padding: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  transform: translate(-50%,0);
+}
+/* Custom Alert Css end */
+
+/* Custom Header Css start */
+.custom-header {
+  padding: 0;
+  margin-left: 5px;
+  height: 55px;
+}
+/* Custom Header Css end */

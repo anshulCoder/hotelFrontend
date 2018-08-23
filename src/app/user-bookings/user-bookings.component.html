@@ -1,0 +1,19 @@
+<div class="contaier-fluid space-for-header">
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card-columns" *ngIf="bookingsHolder.length>0">
+        <div class="card bg-light" *ngFor="let room of bookingsHolder">
+          <div class="card-header">
+            {{room['room_name']}}
+          </div>
+          <div class="card-body text-center">
+            <p class="card-text">{{room['room_description']}}</p>
+            <h5>Room Number: {{room['room_number']}}</h5>
+            <h5>Booking Date: {{room['checkin_date']}} To {{room['checkout_date']}}</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
